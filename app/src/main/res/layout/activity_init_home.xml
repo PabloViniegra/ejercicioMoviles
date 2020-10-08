@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/botonSecondActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InitHomeActivity"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/secondActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Ir al Second Activity" />
+
+    <Button
+        android:id="@+id/thirdActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Ir al Tercer Activity" />
+
+    <TextView
+        android:id="@+id/textoTiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/contadortxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="center"/>
+</LinearLayout>
