@@ -2,6 +2,7 @@ package com.example.ejercicio_pablo2dam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,6 +26,8 @@ public class InitHomeActivity extends AppCompatActivity {
     public Button btnThirdActivity = null;
     int currentTime = 0;
     public static boolean SAVE = false;
+    Activity actualActivity = this;
+    ArrayList <Integer> totalSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,8 @@ public class InitHomeActivity extends AppCompatActivity {
         txtcontador = findViewById(R.id.contadortxt);
         btnSecondActivity = findViewById(R.id.secondActivityButton);
         btnThirdActivity = findViewById(R.id.thirdActivityButton);
-
         chronometer();
-        ;
+
         cajaTexto.setText("Tiempo en Home: \n");
         cajaTexto.setText("Botón de guardado: " + SAVE);
         btnSecondActivity.setOnClickListener(new View.OnClickListener() {
@@ -45,12 +48,12 @@ public class InitHomeActivity extends AppCompatActivity {
                 Intent secondIntent = new Intent(InitHomeActivity.this, SecondActivity.class);
                 secondIntent.putExtra("KEY_WORD_INIT_ACTIVITY", currentTime);
                 cajaTexto.setText("Tiempo en Home: " + String.valueOf(currentTime) + "\n");
-                cajaTexto.setText("Botón de guardado: " + SAVE);
+                cajaTexto.setText("Botón de guardado: " + SAVE + "\n");
                 startActivityForResult(secondIntent, REQUEST_ACTIVITY_RESULT);
+                cajaTexto.setText("Time in InitHomeActivity: " + totalSeconds.get(totalSeconds.size()-1));
             }
         });
     }
-
 
     @Override
     protected void onResume() {
@@ -83,6 +86,7 @@ public class InitHomeActivity extends AppCompatActivity {
     }
 
     public void chronometer() {
+        totalSeconds = new ArrayList<>();
         mytimertask = new TimerTask() {
             @Override
             public void run() {
@@ -90,6 +94,7 @@ public class InitHomeActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         currentTime++;
+                        totalSeconds.add(currentTime);
                         txtcontador.setText(String.valueOf(currentTime));
                     }
                 });
