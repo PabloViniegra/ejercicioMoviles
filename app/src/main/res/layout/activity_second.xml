@@ -8,19 +8,19 @@
     tools:context=".SecondActivity">
 
     <Button
+        android:id="@+id/buttonSaveSecondAct"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/buttonSaveSecondAct"
-        android:text="Guardar progreso"
+        android:background="#CCA0A0"
 
-        />
+        android:text="Guardar progreso" />
 
     <Button
+        android:id="@+id/backToHome"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/backToHome"
-        android:text="Volver a Inicio"
+        android:backgroundTint="#933A3A"
 
-        />
+        android:text="Volver a Inicio" />
 
 </LinearLayout>

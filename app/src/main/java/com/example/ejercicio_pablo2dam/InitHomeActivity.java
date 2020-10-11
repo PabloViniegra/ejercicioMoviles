@@ -26,6 +26,7 @@ public class InitHomeActivity extends AppCompatActivity {
     public Button btnThirdActivity = null;
     int currentTime = 0;
     public static boolean SAVE = false;
+    public static boolean PERMISSIONS = false;
     Activity actualActivity = this;
     ArrayList <Integer> totalSeconds;
 
@@ -46,11 +47,20 @@ public class InitHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent secondIntent = new Intent(InitHomeActivity.this, SecondActivity.class);
-                secondIntent.putExtra("KEY_WORD_INIT_ACTIVITY", currentTime);
+                secondIntent.putExtra("KEY", currentTime);
                 cajaTexto.setText("Tiempo en Home: " + String.valueOf(currentTime) + "\n");
                 cajaTexto.setText("Botón de guardado: " + SAVE + "\n");
                 startActivityForResult(secondIntent, REQUEST_ACTIVITY_RESULT);
                 cajaTexto.setText("Time in InitHomeActivity: " + totalSeconds.get(totalSeconds.size()-1));
+            }
+        });
+
+        btnThirdActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent thirdIntent = new Intent(InitHomeActivity.this,ThirdActivity.class);
+                thirdIntent.putExtra("KEY",currentTime);
+                finish();
             }
         });
     }

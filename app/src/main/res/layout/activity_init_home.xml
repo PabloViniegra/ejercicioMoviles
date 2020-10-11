@@ -25,10 +25,10 @@
 
     <TextView
         android:id="@+id/textoTiempo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="398dp"
+        android:layout_height="110dp"
         android:text="TextView"
-        android:textAlignment="center"/>
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/contadortxt"
