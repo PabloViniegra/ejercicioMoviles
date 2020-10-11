@@ -23,4 +23,12 @@
 
         android:text="Volver a Inicio" />
 
+    <TextView
+        android:id="@+id/txtContador"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 </LinearLayout>

@@ -25,6 +25,10 @@ public class InitHomeActivity extends AppCompatActivity {
     public Button btnSecondActivity = null;
     public Button btnThirdActivity = null;
     int currentTime = 0;
+    TextView txtFromSecond = null;
+    TextView txtFromThird = null;
+    TextView txtData = null;
+    TextView txtPermissions = null;
     public static boolean SAVE = false;
     public static boolean PERMISSIONS = false;
     Activity actualActivity = this;
@@ -41,17 +45,13 @@ public class InitHomeActivity extends AppCompatActivity {
         btnThirdActivity = findViewById(R.id.thirdActivityButton);
         chronometer();
 
-        cajaTexto.setText("Tiempo en Home: \n");
-        cajaTexto.setText("Botón de guardado: " + SAVE);
         btnSecondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent secondIntent = new Intent(InitHomeActivity.this, SecondActivity.class);
                 secondIntent.putExtra("KEY", currentTime);
-                cajaTexto.setText("Tiempo en Home: " + String.valueOf(currentTime) + "\n");
-                cajaTexto.setText("Botón de guardado: " + SAVE + "\n");
-                startActivityForResult(secondIntent, REQUEST_ACTIVITY_RESULT);
-                cajaTexto.setText("Time in InitHomeActivity: " + totalSeconds.get(totalSeconds.size()-1));
+                cajaTexto.append(String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                finish();
             }
         });
 
@@ -59,10 +59,22 @@ public class InitHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent thirdIntent = new Intent(InitHomeActivity.this,ThirdActivity.class);
-                thirdIntent.putExtra("KEY",currentTime);
+                thirdIntent.putExtra("KEY",String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
                 finish();
             }
         });
+        txtFromSecond = findViewById(R.id.txtSecondActivity);
+        Intent fromSecond = getIntent();
+        String aux = fromSecond.getStringExtra("KEY_SECOND_BACK");
+        txtFromSecond.append(aux);
+
+        txtFromThird = findViewById(R.id.txtThirdActivity);
+        Intent fromThird = getIntent();
+        String aux2 = fromThird.getStringExtra("KEY_THIRD_BACK");
+        txtFromThird.append(aux2);
+        txtData = findViewById(R.id.txtSaveData);
+        txtPermissions = findViewById(R.id.txtPermissions);
+
     }
 
     @Override
