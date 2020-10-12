@@ -19,26 +19,26 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ThirdActivity extends AppCompatActivity {
-TextView txtTimeFromHome = null;
-InitHomeActivity home = null;
-Button btnPermissons = null;
-Button btnToHome = null;
-ArrayList <Integer> totalSeconds;
-TimerTask mytimertask = null;
-TextView txtTimeFromInit = null;
-TextView txtContador = null;
-int currentTime = 0;
-Timer timer = null;
+public TextView txtTimeFromHome = null;
+public InitHomeActivity home = null;
+public Button btnPermissons = null;
+public Button btnToHome = null;
+public ArrayList <Integer> totalSeconds;
+public TimerTask mytimertask = null;
+public TextView txtTimeFromInit = null;
+public TextView txtContador = null;
+public int currentTime = 0;
+public Timer timer = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
-        home = new InitHomeActivity();
-        home.chronometer();
-        final Intent timeFromHome = getIntent();
+        chronometer();
+        Intent timeFromHome = getIntent();
         String actualTime = timeFromHome.getStringExtra("KEY");
         txtTimeFromHome = findViewById(R.id.txtTimeHomeActivity);
-        txtTimeFromHome.append(actualTime);
+        txtTimeFromHome.setText(actualTime);
         btnPermissons = findViewById(R.id.btnAddPermissions);
         btnToHome = findViewById(R.id.btnBackToMain);
         chronometer();
@@ -72,7 +72,8 @@ Timer timer = null;
             @Override
             public void onClick(View v) {
                 Intent timeFromThird = new Intent(getApplicationContext(),InitHomeActivity.class);
-                timeFromHome.putExtra("KEY_THIRD_BACK",String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                timeFromThird.putExtra("KEY_THIRD_BACK",String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                startActivity(timeFromThird);
             }
         });
     }
@@ -88,7 +89,7 @@ Timer timer = null;
                     public void run() {
                         currentTime++;
                         totalSeconds.add(currentTime);
-                        txtContador.setText(currentTime);
+                        txtContador.setText(String.valueOf(currentTime));
                     }
                 });
             }

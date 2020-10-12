@@ -22,36 +22,41 @@ public class InitHomeActivity extends AppCompatActivity {
     public final String TAG = getClass().getName();
     public TextView cajaTexto = null;
     public TextView txtcontador = null;
+    public TextView txtFromThird = null;
+    public TextView txtData = null;
+    public TextView txtFromSecond = null;
+    public TextView txtPermissions = null;
     public Button btnSecondActivity = null;
     public Button btnThirdActivity = null;
     int currentTime = 0;
-    TextView txtFromSecond = null;
-    TextView txtFromThird = null;
-    TextView txtData = null;
-    TextView txtPermissions = null;
     public static boolean SAVE = false;
     public static boolean PERMISSIONS = false;
     Activity actualActivity = this;
-    ArrayList <Integer> totalSeconds;
+    public ArrayList <Integer> totalSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init_home);
         Log.d(TAG, "En OnCreate");
+        chronometer();
         cajaTexto = findViewById(R.id.textoTiempo);
         txtcontador = findViewById(R.id.contadortxt);
+        txtFromSecond = findViewById(R.id.txtSecondActivity);
+        txtFromThird = findViewById(R.id.txtThirdActivity);
+        txtPermissions = findViewById(R.id.txtPermissions);
+        txtData = findViewById(R.id.txtSaveData);
         btnSecondActivity = findViewById(R.id.secondActivityButton);
         btnThirdActivity = findViewById(R.id.thirdActivityButton);
-        chronometer();
 
         btnSecondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent secondIntent = new Intent(InitHomeActivity.this, SecondActivity.class);
-                secondIntent.putExtra("KEY", currentTime);
-                cajaTexto.append(String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
-                finish();
+                secondIntent.putExtra("KEY", String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                cajaTexto.setText(String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                resetChronometer(timer);
+                startActivity(secondIntent);
             }
         });
 
@@ -60,20 +65,20 @@ public class InitHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent thirdIntent = new Intent(InitHomeActivity.this,ThirdActivity.class);
                 thirdIntent.putExtra("KEY",String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
-                finish();
+                cajaTexto.setText(String.valueOf(totalSeconds.get(totalSeconds.size()-1)));
+                resetChronometer(timer);
+                startActivity(thirdIntent);
             }
         });
-        txtFromSecond = findViewById(R.id.txtSecondActivity);
         Intent fromSecond = getIntent();
         String aux = fromSecond.getStringExtra("KEY_SECOND_BACK");
-        txtFromSecond.append(aux);
+        txtFromSecond.setText(aux);
 
-        txtFromThird = findViewById(R.id.txtThirdActivity);
         Intent fromThird = getIntent();
         String aux2 = fromThird.getStringExtra("KEY_THIRD_BACK");
-        txtFromThird.append(aux2);
-        txtData = findViewById(R.id.txtSaveData);
-        txtPermissions = findViewById(R.id.txtPermissions);
+        txtFromThird.setText(aux2);
+        txtData.setText(String.valueOf(SAVE));
+        txtPermissions.setText(String.valueOf(PERMISSIONS));
 
     }
 
@@ -126,5 +131,8 @@ public class InitHomeActivity extends AppCompatActivity {
         timer.schedule(mytimertask, 1, 1000);
     }
 
+    public static void resetChronometer (Timer t) {
+        t = null;
 
+    }
 }

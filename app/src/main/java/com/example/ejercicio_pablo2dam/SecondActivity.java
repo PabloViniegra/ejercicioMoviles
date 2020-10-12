@@ -19,11 +19,12 @@ public class SecondActivity extends AppCompatActivity {
     final int REQUEST = 2;
     public Button btnSave = null;
     public Button btnBack = null;
-    ArrayList <Integer> totalSeconds;
-    TimerTask mytimertask = null;
-    Timer timer = null;
+    public ArrayList <Integer> totalSeconds;
+    public TimerTask mytimertask = null;
+    public Timer timer = null;
     int currentTime = 0;
-    TextView txtContador = null;
+    public TextView txtContador = null;
+    public TextView txtTimeMain = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,9 @@ public class SecondActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.buttonSaveSecondAct);
         btnBack = findViewById(R.id.backToHome);
         Intent receiveIntent = getIntent();
+        String aux = receiveIntent.getStringExtra("KEY");
+        txtTimeMain = findViewById(R.id.txtTimeMain);
+        txtTimeMain.setText(aux);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

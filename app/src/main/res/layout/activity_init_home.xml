@@ -13,19 +13,21 @@
         android:id="@+id/secondActivityButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Ir al Second Activity" />
+        android:text="Ir al Second Activity"
+        android:textAlignment="center"
+         />
 
     <Button
         android:id="@+id/thirdActivityButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Ir al Tercer Activity" />
+        android:text="Ir al Tercer Activity"
+        android:textAlignment="center"/>
+
 
     <TextView
         android:id="@+id/textoTiempo"
-        android:layout_width="392dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time in this activity: "
         android:textAlignment="center" />
@@ -56,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Permissions: "
-        android:textAlignment="center"/>
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/contadortxt"

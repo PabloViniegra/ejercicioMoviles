@@ -24,6 +24,13 @@
         android:text="Volver a Inicio" />
 
     <TextView
+        android:id="@+id/txtTimeMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time in InitHomeActivity: "
+        android:textAlignment="center"/>
+
+    <TextView
         android:id="@+id/txtContador"
         android:layout_width="match_parent"
         android:layout_height="71dp"

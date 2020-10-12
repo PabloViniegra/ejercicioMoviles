@@ -28,5 +28,13 @@
         android:layout_height="wrap_content"
         android:text="Tiempo en InitHomeActivity: " />
 
+    <TextView
+        android:id="@+id/txtContador"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 
 </LinearLayout>
